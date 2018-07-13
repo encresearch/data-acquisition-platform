@@ -27,6 +27,7 @@ Go from: 'Voltage --> ppm' by using the following functions:
 '''
 
 #Sensor Parameters
+MQ131_voltageMIN = 0
 MQ131_voltageMAX = 5
 MQ131_ppmMIN = .01
 MQ131_ppmMAX = 2
@@ -50,7 +51,7 @@ def MQ131_ADC_to_voltage(ADC):
 def MQ131_voltage_to_ppm(voltage):
 	#Converts voltage directly into ppm
 	#(Not a necessary function, but included incase it becomes useful later on)
-	ozoneppm = mapData(voltage, 0, MQ131_voltageMAX, MQ131_ppmMIN, MQ131_ppmMAX)
+	ozoneppm = mapData(voltage, MQ131_voltageMIN, MQ131_voltageMAX, MQ131_ppmMIN, MQ131_ppmMAX)
 	return ozoneppm
 	
 	
@@ -73,6 +74,7 @@ Go from: 'Voltage --> ppm' by using the following functions:
 '''
 
 #Sensor Parameters
+MQ9_voltageMIN = 0
 MQ9_voltageMAX = 5
 MQ9_ppmMIN = 10
 MQ9_ppmMAX = 1000
@@ -96,7 +98,7 @@ def MQ9_ADC_to_voltage(ADC):
 def MQ9_voltage_to_ppm(voltage):
 	#Converts voltage directly into ppm
 	#(Not a necessary function, but included incase it becomes useful later on)
-	oxygenppm = mapData(voltage, 0, MQ9_voltageMAX, MQ9_ppmMIN, MQ9_ppmMAX)
+	oxygenppm = mapData(voltage, MQ9_voltageMIN, MQ9_voltageMAX, MQ9_ppmMIN, MQ9_ppmMAX)
 	return oxygenppm
 	
 	
@@ -119,6 +121,7 @@ Go from: 'Voltage --> tesla' by using the following functions:
 '''
 
 #Sensor Paramters
+magnetometer_voltageMIN = 0 #----------- Not Actual Values
 magnetometer_voltageMAX = 3 #----------- Not Actual Values
 magnetometer_teslaMIN = 0  #------------ Not Actual Values
 magnetometer_teslaMAX = 1 #------------- Not Actual Values
@@ -141,7 +144,7 @@ def magnetometer_ADC_to_voltage(ADC):
 def magnetometer_voltage_to_tesla(voltage):
 	#Converts voltage directly into teslas
 	#(Not a necessary function, but included incase it becomes useful later on)
-	return mapData(voltage, 0, magnetometer_voltageMAX, magnetometer_teslaMIN, magnetometer_teslaMAX)
+	return mapData(voltage, magnetometer_voltageMIN, magnetometer_voltageMAX, magnetometer_teslaMIN, magnetometer_teslaMAX)
 	
 	
 	
@@ -163,6 +166,7 @@ Go from: 'Voltage --> pH' by using the following functions:
 '''
 
 #Sensor Paramters
+soilpH_voltageMIN = 0 #------- Not Actual Values
 soilpH_voltageMAX = 3 #------- Not Actual Values
 soilpH_pHMIN = 0 #------------ Not Actual Values
 soilpH_pHMAX = 14 #----------- Not Actual Values
@@ -185,7 +189,7 @@ def soilpH_ADC_to_voltage(ADC):
 def soilpH_voltage_to_pH(voltage):
 	#Converts voltage directly into pH
 	#(Not a necessary function, but included incase it becomes useful later on)
-	return mapData(voltage, 0, soilpH_voltageMAX, soilpH_phMIN, soilpH_pHMAX)
+	return mapData(voltage, soilpH_voltageMIN, soilpH_voltageMAX, soilpH_phMIN, soilpH_pHMAX)
 	
 	
 	
@@ -207,6 +211,7 @@ Go from: 'Voltage --> pH' by using the following functions:
 '''
 
 #Sensor Paramters
+waterpH_voltageMIN = 0 #------- Not Actual Values
 waterpH_voltageMAX = 3 #------- Not Actual Values
 waterpH_pHMIN = 0 #------------ Not Actual Values
 waterpH_pHMAX = 14 #----------- Not Actual Values
@@ -223,13 +228,13 @@ def waterpH_ADC_to_pH(ADC):
 def waterpH_ADC_to_voltage(ADC):
 	#Converts ADC value (0-ADC_resolution) back into voltage value
 	#(Not a necessary function, but included just incase it becomes useful later on)
-	voltage = (ADC *waterpH_voltageMAX) / ADC_resolution
+	voltage = (ADC * waterpH_voltageMAX) / ADC_resolution
 	return voltage
 
 def waterpH_voltage_to_pH(voltage):
 	#Converts voltage directly into pH
 	#(Not a necessary function, but included incase it becomes useful later on)
-	return mapData(voltage, 0, waterpH_voltageMAX, waterpH_phMIN, waterpH_pHMAX)	
+	return mapData(voltage, waterpH_voltageMIN, waterpH_voltageMAX, waterpH_phMIN, waterpH_pHMAX)	
 	
 	
 	
@@ -251,6 +256,7 @@ Go from: 'Voltage --> conductivity' by using the following functions:
 '''
 
 #Sensor Paramters
+soilConductivity_voltageMIN = 0 #------------ Not Actual Values
 soilConductivity_voltageMAX = 3 #------------ Not Actual Values
 soilConductivity_conductivityMIN = 0 #------- Not Actual Values
 soilConductivity_conductivityMAX = 1000 #---- Not Actual Values
@@ -273,7 +279,7 @@ def soilConductivity_ADC_to_voltage(ADC):
 def soilConductivity_voltage_to_conductivity(voltage):
 	#Converts voltage directly into conductivity
 	#(Not a necessary function, but included incase it becomes useful later on)
-	return mapData(voltage, 0, soilConductivity_voltageMAX, soilConductivity_conductivityMIN, soilConductivity_conductivityMAX)
+	return mapData(voltage, soilConductivity_voltageMIN, soilConductivity_voltageMAX, soilConductivity_conductivityMIN, soilConductivity_conductivityMAX)
 	
 	
 	
@@ -295,6 +301,7 @@ Go from: 'Voltage --> conductivity' by using the following functions:
 '''
 
 #Sensor Paramters
+waterConductivity_voltageMIN = 0 #----------------- Not Actual Values
 waterConductivity_voltageMAX = 3 #----------------- Not Actual Values
 waterConductivity_conductivityMIN = 0 #------------ Not Actual Values
 waterConductivity_conductivityMAX = 1000 #--------- Not Actual Values
@@ -317,5 +324,5 @@ def waterConductivity_ADC_to_voltage(ADC):
 def waterConductivity_voltage_to_conductivity(voltage):
 	#Converts voltage directly into conductivity
 	#(Not a necessary function, but included incase it becomes useful later on)
-	return mapData(voltage, 0, waterConductivity_voltageMAX, waterConductivity_conductivityMIN, waterConductivity_conductivityMAX)	
+	return mapData(voltage, waterConductivity_voltageMIN, waterConductivity_voltageMAX, waterConductivity_conductivityMIN, waterConductivity_conductivityMAX)	
 	
